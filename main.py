@@ -1,5 +1,8 @@
 # Contact Manager CLI Application
-# This program allows a user to store and manage contacts.
+# Stores and manages contacts in memory
+
+contact_list = []
+
 
 def display_menu():
     print("\nCONTACT MANAGER")
@@ -8,21 +11,49 @@ def display_menu():
     print("3. Exit")
 
 
+def add_contact():
+    name = input("Enter contact name: ")
+    phone = input("Enter phone number: ")
+    email = input("Enter email address: ")
+
+    entry = {
+        "name": name,
+        "phone": phone,
+        "email": email
+    }
+
+    contact_list.append(entry)
+
+    print("Contact saved successfully.")
+
+
+def view_contacts():
+    if len(contact_list) == 0:
+        print("No contacts stored.")
+    else:
+        for entry in contact_list:
+            print(entry)
+
+
 def main():
-    choice = ""
+    menu_choice = ""
 
-    while choice != "3":
+    while menu_choice != "3":
         display_menu()
-        choice = input("Enter choice: ")
 
-        if choice == "1":
-            print("Add contact feature coming soon")
-        elif choice == "2":
-            print("View contacts feature coming soon")
-        elif choice == "3":
-            print("Have a nice day!")
+        menu_choice = input("Enter choice: ")
+
+        if menu_choice == "1":
+            add_contact()
+
+        elif menu_choice == "2":
+            view_contacts()
+
+        elif menu_choice == "3":
+            print("Have a nice day :)")
+
         else:
-            print("Try again, invalid input")
+            print("Try again, invalid input!")
 
 
 if __name__ == "__main__":
